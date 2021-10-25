@@ -10,9 +10,9 @@ def extrato():
 
     if transacoes:
         result = transacoes_schema.dump(transacoes)
-        return jsonify({'message': 'successfully fetched', 'data': result.data})
+        return jsonify({'message': 'extrato realizado', 'data': result.data}), 200
 
-    return jsonify({'message': 'nothing found', 'data': {}})
+    return jsonify({'message': 'Não foi possivel realizar o extrato, tente novamante', 'data': {}}), 500
 
 
 def extrato_periodo():
@@ -25,6 +25,6 @@ def extrato_periodo():
 
     if transacoes:
         result = transacoes_schema.dump(transacoes)
-        return jsonify({'message': 'successfully fetched', 'data': result.data})
+        return jsonify({'message': 'extrato por periodo realizado', 'data': result.data}), 200
 
-    return jsonify({'message': 'nothing found', 'data': {}})
+    return jsonify({'message': 'Não foi possivel realizar extrato por periodo, tente novamante', 'data': {}}), 500

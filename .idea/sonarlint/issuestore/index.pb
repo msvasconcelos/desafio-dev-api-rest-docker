@@ -13,10 +13,6 @@ C
 D
 app/routes/routes.py,a/a/aa0ae489cdc587f7e84247458a37ff28771c723d
 C
-app/models/posts.py,d/f/df8e508a9cf30f6d029c4cda90ce5fd108aae50b
-J
-app/models/commentaries.py,5/4/54063433adecfae4b9262c6a766e124e25daa68e
-C
 app/models/users.py,a/3/a30bfe8b64d0cf2abe7141b9848fdc75fd1ea059
 D
 app/models/contas.py,0/d/0d73590358b7dc85061d067d47967efb4ca86812

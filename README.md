@@ -1,4 +1,4 @@
-#API Rest que realizam operações bancárias. Desafio-Docker-tech
+# API Rest que realizam operações bancárias. Desafio-Docker-tech
  
 ## API REST usando framework Flask com SQLAlchemy e Marshmallow
 
@@ -53,47 +53,9 @@ $ py.test
 
 ***Estou deixando meu workspace do Insominia para ajudar nas requisições(tambem pode ser utilizada no Postman)***
 
-### Listar todos usuários
+## Listar de todos os Endpoints da aplicação
 
-**Definição/Request**
 
-`GET /v1/users`
-
-**Response**
-
-- `200 OK` ao ter sucesso
-
-```json
-{
-    "data": [
-        {
-            "created_on": "2019-06-20T01:49:12+00:00",
-            "email": "uew2141w@gmail.c1om",
-            "id": 7,
-            "name": "Hector",
-            "password": "pbkdf2:sha256:150000$JTZXWfaO$9f81b13091bf87bdc7883f55089efec6421e3ed076d3bbc3bb4476b6b4b8d39f",
-            "username": "hector4413"
-        },
-        {
-            "created_on": "2019-06-20T02:09:35+00:00",
-            "email": "uewasdasd41w@gmail.c1om",
-            "id": 9,
-            "name": "Hedgar",
-            "password": "pbkdf2:sha256:150000$JTZXWfaO$9f81b13091bf87bdc7883f55089efec6421e3ed076d3bbc3bb4476b6b4b8d39f",
-            "username": "hedgsahj"
-        },
-        {
-            "created_on": "2019-06-20T14:49:06+00:00",
-            "email": "uewasd41w@gmail.c1om",
-            "id": 10,
-            "name": "Hedgar",
-            "password": "pbkdf2:sha256:150000$JTZXWfaO$9f81b13091bf87bdc7883f55089efec6421e3ed076d3bbc3bb4476b6b4b8d39f",
-            "username": "hed"
-        }
-    ],
-    "message": "successfully fetched"
-}
-```
 ### Listar usuários filtrando por nome
 
 **Definição/Request**
@@ -104,29 +66,7 @@ $ py.test
 
 - `200 OK` ao ter sucesso
 
-```json
-{
-    "data": [
-        {
-            "created_on": "2019-06-20T02:09:35+00:00",
-            "email": "uewasdasd41w@gmail.c1om",
-            "id": 9,
-            "name": "Hedgar",
-            "password": "pbkdf2:sha256:150000$JTZXWfaO$9f81b13091bf87bdc7883f55089efec6421e3ed076d3bbc3bb4476b6b4b8d39f",
-            "username": "hedgsahj"
-        },
-        {
-            "created_on": "2019-06-20T14:49:06+00:00",
-            "email": "uewasd41w@gmail.c1om",
-            "id": 10,
-            "name": "Hedgar",
-            "password": "pbkdf2:sha256:150000$JTZXWfaO$9f81b13091bf87bdc7883f55089efec6421e3ed076d3bbc3bb4476b6b4b8d39f",
-            "username": "hed"
-        }
-    ],
-    "message": "successfully fetched"
-}
-```
+
 
 
 ## Retornar um usuário especifico
@@ -137,28 +77,7 @@ $ py.test
 
 - `404 Not Found` usuário não existe
 
-```json
-{
-    "data": {},
-    "message": "user don't exist"
-}
-```
-
 - `200 OK` ao ter sucesso
-
-```json
-{
-    "data": {
-        "created_on": "2019-06-20T02:09:35+00:00",
-        "email": "uewasdasd41w@gmail.c1om",
-        "id": 9,
-        "name": "Hedgar",
-        "password": "hecto1r1234",
-        "username": "hedgsahj"
-    },
-    "message": "successfully fetched"
-}
-```
 
 
 ### Registrando novo usuário
@@ -178,38 +97,9 @@ $ py.test
 
 - `201 Created` ao ter sucesso
 
-```json
-{
-    "data": {
-        "created_on": "2019-06-20T19:38:35+00:00",
-        "email": "uewasdx41w@gmail.c1om",
-        "id": 11,
-        "name": "Hedgar",
-        "password": "pbkdf2:sha256:150000$1GZZJmHH$671c1dffb868b6dc72b459fb3c2cb8cd2dd547b4d4f64834139469a562dc4b0a",
-        "username": "hexd"
-    },
-    "message": "successfully registered"
-}
-```
-
 - `200 Created` ao ter erro com usuário ou email existente
 
-```json
-{
-    "data": {
-        },
-    "message": "user already exists"
-}
-```
-
 - `500 Internal error` ao ter erro com o servidor ou sistema
-
-```json
-{
-    "data": {},
-    "message": "unable to create"
-}
-```
 
 
 ### Atualizando usuário
@@ -229,39 +119,12 @@ $ py.test
 
 - `201 Created` ao ter sucesso
 
-```json
-{
-    "data": {
-        "created_on": "2019-06-20T02:09:35+00:00",
-        "email": "uewaxsd41w@gmail.c1om",
-        "id": 9,
-        "name": "Hedgar",
-        "password": "pbkdf2:sha256:150000$zm6vMaTn$eedf14ff2b30a449e52be4a96ae0533d437faba3869ae93d7297e5036f2f4ffc",
-        "username": "hex1x11d"
-    },
-    "message": "successfully updated"
-}
-```
-
 - `404 Not Found` usuário não existe
-
-```json
-{
-    "data": {},
-    "message": "user don't exist"
-}
-```
 
 - `500 Internal error` ao ter erro com servidor ou sistema
 
-```json
-{
-    "data": {},
-    "message": "unable to update"
-}
-```
 
-## Deletar usuário
+### Deletar usuário
 
 **Definição**
 
@@ -271,56 +134,172 @@ $ py.test
 
 - `200 No Content` ao ter sucesso
 
-```json
-{
-    "data": {
-        "created_on": "2019-06-20T01:38:55+00:00",
-        "email": "uewuhe11w@gmail.com",
-        "id": 3,
-        "name": "Hector",
-        "password": "hector1234",
-        "username": "hector12113"
-    },
-    "message": "successfully deleted"
-}
-```
-
 - `404 Not Found` usuário não existente
-
-```json
-{
-    "data": {},
-    "message": "user don't exist"
-}
-```
 
 - `500 Internal error` erro com servidor ou sistema
 
-```json
-{
-    "data": {},
-    "message": "unable to delete"
-}
-```
 
-## Autenticação do token com servidor JWT
+### Autenticação do token com servidor JWT
 
-`POST /v1/auth`
+`POST /v1/authenticate`
 
 **No header do seu JavaScript será necessário passar os dados do usuário.**
 
-***Authorization: 'Basic ' + btoa(username + ':' + password)***
+***uthorization: 'Basic ' + btoa(username + ':' + password)***
 
 **Response**
 
 - `401 Not Found` caso não exista
 - `200 OK` ao ter sucesso
 
-```json
-{
- "token": "QIHWEUkoqwe8291j1ioe2j12jjw9218.JASJA.WQIUH3uijs0a",
- "exp": "Mon, 20 May 2019 10:45:50 GMT"
-}
-```
+
+### Cadastrar pessoa 
+**Definição/Request**
+
+`POST /v1/casdastrar-pessoa/?token=<token>`
+
+**Argumentos**
+
+- `"nome":string` nome da pessoa que será relação com a conta 
+- `"cpf":string` campo cpf da pessoa
+- `"dataNascimento":string` data de nascimento da pessoa
+
+**Response**
+
+- `201 Created` pessoa cadastrada com sucesso 
+
+- `500 Internal error` ao ter erro com o servidor ou sistema
 
 
+### Cadastrar conta
+**Definição/Request**
+
+`POST /v1/nova-conta/?token=<token>`
+
+**Argumentos**
+
+- `"idPessoa":numerico` id da pessoa vinculado a conta 
+- `"limiteSaqueDiario":numerico` valor de limite de saque diario 
+- `"tipoConta":numerico` informar o numero do tipo da conta 
+
+**Response**
+
+- `201 Created` conta criada com sucesso 
+
+- `500 Internal error` ao ter erro com o servidor ou sistema
+
+
+### Realizar deposito
+**Definição/Request**
+
+`PUT /v1/depositar/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que será realizado o deposito
+- `"depositar":numerico` valor que será depositado 
+
+**Response**
+
+- `200 Created` deposito realizado 
+
+- `404 Not found` conta não encontrada, tente novamente
+
+- `500 Internal error` esta conta esta bloqueada, nao é possivel realizar deposito
+
+- `500 Internal error` não foi possivel depositar, tente novamante
+
+
+### Realizar saque
+**Definição/Request**
+
+`PUT /v1/saque/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que será realizado o saque
+- `"saque":numerico` valor que será sacado 
+
+**Response**
+
+- `200 Created` saque realizado com sucesso
+
+- `404 Not found` conta não encontrada, tente novamente
+
+- `500 Internal error` esta conta esta bloqueada, nao é possivel realizar saque 
+
+- `500 Internal error` voce nao tem limite para esse saque, consulte o limite e tente novamente
+
+- `500 Internal error` voce nao tem saldo para esse saque, consulte o saldo e tente novamente
+
+- `500 Internal error` não foi possivel sacar, tente novamante
+
+
+### Consultar saldo
+**Definição/Request**
+
+`POST /v1/saldo/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que deseja verificar o saldo 
+
+**Response**
+
+- `200 Created` seu saldo é: <saldo>
+
+- `404 Not found` conta não encontrada, tente novamente
+
+- `500 Internal error` não foi possivel consultar o saldo, tente novamante
+
+
+### Bloquear conta 
+**Definição/Request**
+
+`PUT /v1/bloquear/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que deseja bloquear 
+
+**Response**
+
+- `200 Created` conta bloqueada com sucesso
+
+- `404 Not found` conta não encontrada, tente novamente
+
+- `500 Internal error` não foi possivel bloquear, tente novamante
+
+
+### Extrato da conta
+**Definição/Request**
+
+`POST /v1/extrato/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que deseja o extrato
+
+**Response**
+
+- `200 Created` extrato realizado
+
+- `500 Internal error` não foi possivel realizar o extrato, tente novamante
+
+
+### Extrato da conta por periodo
+**Definição/Request**
+
+`POST /v1/extrato-periodo/?token=<token>`
+
+**Argumentos**
+
+- `"idConta":numerico` id da conta que deseja o extrato
+- `"data_inicio":data` data inicio do periodo do extrato 
+- `"data_fim":data` data fim do periodo do extrato 
+
+**Response**
+
+- `200 Created` extrato por periodo realizado
+
+- `500 Internal error` não foi possivel realizar extrato por periodo, tente novamante

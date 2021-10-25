@@ -80,7 +80,7 @@ def depositar():
             result = conta_schema.dump(getConta)
             return jsonify({'message': 'Deposito realizado com sucesso', 'data': result.data}), 200
         except:
-            return jsonify({'message': 'Não foi possivel bloquear, tente novamante', 'data': {}}), 500
+            return jsonify({'message': 'Não foi possivel depositar, tente novamante', 'data': {}}), 500
 
 
 def saque():
