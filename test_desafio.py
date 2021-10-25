@@ -8,7 +8,7 @@ from flask import json
 def test_criar_usuario():
     response = app.test_client().post(
         '/v1/users',
-        data=json.dumps({"name": "test22", "username": "test22", "password": "test22", "email": "test22@hotmail.com"}),
+        data=json.dumps({"name": "test", "username": "test", "password": "test", "email": "test@hotmail.com"}),
         content_type='application/json',
     )
 
@@ -40,7 +40,7 @@ def test_criar_pessoa():
 
     response2 = app.test_client().post(
         f'/v1/casdastrar-pessoa?token={token}',
-        data=json.dumps({"nome": "test22", "cpf": "06589940322", "dataNascimento": "1996-04-11"}),
+        data=json.dumps({"nome": "test", "cpf": "06589940301", "dataNascimento": "1996-04-11"}),
         content_type='application/json',
 
     )
@@ -62,7 +62,7 @@ def test_criar_conta():
 
     response2 = app.test_client().post(
         f'/v1/nova-conta?token={token}',
-        data=json.dumps({"idPessoa": 18, "limiteSaqueDiario": 5000, "tipoConta": 10}),
+        data=json.dumps({"idPessoa": 1, "limiteSaqueDiario": 5000, "tipoConta": 10}),
         content_type='application/json',
 
     )
@@ -84,7 +84,7 @@ def test_depositar():
 
     response2 = app.test_client().put(
         f'/v1/depositar?token={token}',
-        data=json.dumps({"idConta": 16, "depositar": 1500}),
+        data=json.dumps({"idConta": 1, "depositar": 1500}),
         content_type='application/json',
 
     )
@@ -106,7 +106,7 @@ def test_saque():
 
     response2 = app.test_client().put(
         f'/v1/saque?token={token}',
-        data=json.dumps({"idConta": 16, "saque": 500}),
+        data=json.dumps({"idConta": 1, "saque": 500}),
         content_type='application/json',
 
     )
@@ -128,7 +128,7 @@ def test_saque_limite():
 
     response2 = app.test_client().put(
         f'/v1/saque?token={token}',
-        data=json.dumps({"idConta": 16, "saque": 15000}),
+        data=json.dumps({"idConta": 1, "saque": 15000}),
         content_type='application/json',
 
     )
@@ -150,7 +150,7 @@ def test_saque_sem_saldo():
 
     response2 = app.test_client().put(
         f'/v1/saque?token={token}',
-        data=json.dumps({"idConta": 16, "saque": 2000}),
+        data=json.dumps({"idConta": 1, "saque": 2000}),
         content_type='application/json',
 
     )
@@ -172,7 +172,7 @@ def test_consulta_saldo():
 
     response2 = app.test_client().post(
         f'/v1/saldo?token={token}',
-        data=json.dumps({"idConta": 16}),
+        data=json.dumps({"idConta": 1}),
         content_type='application/json',
 
     )
@@ -194,7 +194,7 @@ def test_bloquear():
 
     response2 = app.test_client().put(
         f'/v1/bloquear?token={token}',
-        data=json.dumps({"idConta": 16}),
+        data=json.dumps({"idConta": 1}),
         content_type='application/json',
 
     )
@@ -216,7 +216,7 @@ def test_saque_bloqueado():
 
     response2 = app.test_client().put(
         f'/v1/saque?token={token}',
-        data=json.dumps({"idConta": 16, "saque": 100}),
+        data=json.dumps({"idConta": 1, "saque": 100}),
         content_type='application/json',
 
     )
@@ -238,7 +238,7 @@ def test_extrato():
 
     response2 = app.test_client().post(
         f'/v1/extrato?token={token}',
-        data=json.dumps({"idConta": 16}),
+        data=json.dumps({"idConta": 1}),
         content_type='application/json',
 
     )
@@ -260,7 +260,7 @@ def test_extrato_periodo():
 
     response2 = app.test_client().post(
         f'/v1/extrato?token={token}',
-        data=json.dumps({"idConta": 16, "data_inicio": "2021-10-20", "data_fim": "2021-10-25"}),
+        data=json.dumps({"idConta": 16, "data_inicio": "2021-10-20", "data_fim": "2021-10-30"}),
         content_type='application/json',
 
     )

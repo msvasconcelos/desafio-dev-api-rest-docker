@@ -1,8 +1,57 @@
-# API REST usando framework Flask com SQLAlchemy e Marshmallow
+#API Rest que realizam operações bancárias. Desafio-Docker-tech
  
-## How-To
+## API REST usando framework Flask com SQLAlchemy e Marshmallow
 
-# Endpoint de usuários
+### Instalar
+
+```bash
+# clone o repositório
+$ https://github.com/msvasconcelos/desafio-dev-api-rest-docker.git
+$ cd desafio-dev-api-rest-docker
+```
+
+**Crie um virtualenv e ative-o:**
+
+```bash
+$ python3 -m venv venv
+$ . venv/bin/activate
+```
+
+**Instalar dependencias do projeto:**
+
+```bash
+$ python3 -m pip install --upgrade pip
+$ pip install -r requirements.txt
+```
+
+***Não foi terminado a parte do docker, por isso para conectar ao banco de dados é nece
+necessário conexão com mysql***
+
+***Altere em config.py sua conexão com o banco***
+
+```bash
+SQLALCHEMY_DATABASE_URI = 'mysql://root@127.0.0.1:3306/docker'
+```
+
+**Rodar:**
+```bash
+$ python run.py
+```
+
+**Testes:**
+***Está sendo utilizado o pytest***
+
+***Os testes ainda estão bem manuais, mas o script já é o necessarios para rodar a primeira vez e ja deixar uma pequena base de dados***
+
+***OBS: os campos de authorization estão setados manual com um codigo auth basic, basta gerar um via requisicao e alterar no codigo***
+```bash
+# para rodar o teste
+$ py.test
+```
+
+**API Client:**
+
+***Estou deixando meu workspace do Insominia para ajudar nas requisições(tambem pode ser utilizada no Postman)***
 
 ### Listar todos usuários
 
