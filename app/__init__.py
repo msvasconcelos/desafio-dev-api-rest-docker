@@ -9,7 +9,6 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 
-from .models import users, posts, commentaries, pessoas, contas, transacoes
+from .models import users, pessoas, contas, transacoes
 from .views import users, helper
 from .routes import routes
-

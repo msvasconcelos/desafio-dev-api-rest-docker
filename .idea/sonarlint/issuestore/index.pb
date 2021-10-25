@@ -32,3 +32,14 @@ E
 app/models/pessoas.py,1/5/15c7da26487e5744a763f642fcb2feabb38f5ef8
 H
 app/models/transacoes.py,f/3/f3e6b856e421188ec98f5e4f47162f1aa4c5b15b
+:
+
+Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+G
+app/views/transacoes.py,d/f/df1433fbbd576fb8d00b274a5839bae311ff23dd
+;
+database.py,1/2/12d0bfc8adac6eee15262b728a538821e35c98c9
+6
+run.py,8/0/806d6ceb4e60342798038124ccf7dc1a423a4433
+?
+test_desafio.py,4/5/45d30329e736436d6f10cd3c9f33de710bdb06ee

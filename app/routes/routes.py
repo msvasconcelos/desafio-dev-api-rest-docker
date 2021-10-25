@@ -66,6 +66,7 @@ def cadastrar_pessoa(current_user):
 def depositar(current_user):
     return contas.depositar()
 
+
 @app.route('/v1/saque', methods=['PUT'])
 @helper.token_required
 def saque(current_user):
@@ -90,7 +91,7 @@ def extrato(current_user):
     return transacoes.extrato()
 
 
-@app.route('/v1/extrato', methods=['GET'])
+@app.route('/v1/extrato-periodo', methods=['POST'])
 @helper.token_required
 def extrato_periodo(current_user):
-    return jsonify({'message': f'Hello {current_user.name}'})
+    return transacoes.extrato_periodo()

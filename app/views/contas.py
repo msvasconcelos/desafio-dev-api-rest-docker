@@ -2,13 +2,8 @@ from werkzeug.security import generate_password_hash
 from app import db
 from datetime import datetime
 from flask import request, jsonify
-from ..models.users import Users, user_schema, users_schema
 from ..models.contas import Contas, conta_schema, contas_schema
 from ..models.transacoes import Transacoes, transacao_schema, transacoes_schema
-
-"""Retorna lista de usuários"""
-
-"""Cadastro de usuários com validação de existência"""
 
 
 def nova_conta():
@@ -29,9 +24,6 @@ def nova_conta():
         return jsonify({'message': 'Conta não criada, tente novamente', 'data': {}}), 500
 
 
-"""Atualiza usuário baseado no ID, caso o mesmo exista."""
-
-
 def bloquear():
     idConta = request.json['idConta']
     getConta = Contas.query.get(idConta)
@@ -44,7 +36,7 @@ def bloquear():
             getConta.flagAtivo = False
             db.session.commit()
             result = conta_schema.dump(getConta)
-            return jsonify({'message': 'conta bloqueada com sucesso', 'data': result.data}), 201
+            return jsonify({'message': 'conta bloqueada com sucesso', 'data': result.data}), 200
         except:
             return jsonify({'message': 'Não foi possivel bloquear, tente novamante', 'data': {}}), 500
 
@@ -60,7 +52,7 @@ def consulta_saldo():
         try:
             result = conta_schema.dump(getConta)
             print(result)
-            return jsonify({'message': f'seu saldo é: {getConta.saldo}', 'data': result.data}), 201
+            return jsonify({'message': f'seu saldo é: {getConta.saldo}', 'data': result.data}), 200
         except:
             return jsonify({'message': 'Não foi possivel consultar o saldo, tente novamante', 'data': {}}), 500
 
@@ -75,7 +67,7 @@ def depositar():
     transacao = Transacoes(idConta, depositar)
 
     if verificar_bloqueio is False:
-        return jsonify({'message': "Esta conta esta bloqueada, nao é possivel realizar deposito", 'data': {}}), 404
+        return jsonify({'message': "Esta conta esta bloqueada, nao é possivel realizar deposito", 'data': {}}), 500
 
     if not getConta:
         return jsonify({'message': "Conta não encontrada, tente novamente", 'data': {}}), 404
@@ -86,7 +78,7 @@ def depositar():
             db.session.add(transacao)
             db.session.commit()
             result = conta_schema.dump(getConta)
-            return jsonify({'message': 'Deposito realizado com sucesso', 'data': result.data}), 201
+            return jsonify({'message': 'Deposito realizado com sucesso', 'data': result.data}), 200
         except:
             return jsonify({'message': 'Não foi possivel bloquear, tente novamante', 'data': {}}), 500
 
@@ -99,7 +91,7 @@ def saque():
     limite_saque_diario = getConta.limiteSaqueDiario
     verificar_bloqueio = getConta.flagAtivo
 
-    getTrasacoes = Transacoes.query.filter(Transacoes.dataTransacao.like(f'%{hoje}%')).all()
+    getTrasacoes = Transacoes.query.filter(Transacoes.dataTransacao.like(f'%{hoje}%'), Transacoes.idConta.like(f'%{idConta}%')).all()
     saques_realizados = 0
     interacao = 0
     for i in getTrasacoes:
@@ -109,7 +101,6 @@ def saque():
         interacao = interacao + 1
 
     valor_ja_sacado_mais_saque = saques_realizados - saque
-    print("teste")
     check_limite = limite_saque_diario + valor_ja_sacado_mais_saque
 
     saldo_futuro = getConta.saldo - saque
@@ -117,13 +108,13 @@ def saque():
     transacao = Transacoes(idConta, valor_negativo)
 
     if verificar_bloqueio is False:
-        return jsonify({'message': "Esta conta esta bloqueada, nao é possivel realizar saque", 'data': {}}), 404
+        return jsonify({'message': "Esta conta esta bloqueada, nao é possivel realizar saque", 'data': {}}), 500
 
     if check_limite < 0:
-        return jsonify({'message': "Voce nao tem limite para esse saque, consulte o limite e tente novamente", 'data': {}}), 404
+        return jsonify({'message': "Voce nao tem limite para esse saque, consulte o limite e tente novamente", 'data': {}}), 500
 
     if saldo_futuro < 0:
-        return jsonify({'message': "Voce nao tem saldo para esse saque, consulte o saldo e tente novamente", 'data': {}}), 404
+        return jsonify({'message': "Voce nao tem saldo para esse saque, consulte o saldo e tente novamente", 'data': {}}), 500
 
     if not getConta:
         return jsonify({'message': "Conta não encontrada, tente novamente", 'data': {}}), 404
@@ -134,6 +125,6 @@ def saque():
             db.session.add(transacao)
             db.session.commit()
             result = conta_schema.dump(getConta)
-            return jsonify({'message': 'Saque realizado com sucesso', 'data': result.data}), 201
+            return jsonify({'message': 'Saque realizado com sucesso', 'data': result.data}), 200
         except:
             return jsonify({'message': 'Não foi possivel sacar, tente novamante', 'data': {}}), 500
